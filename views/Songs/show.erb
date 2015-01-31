@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title><%= song.title %></title>
+</head>
+<body>
+  <h1><%= song.title %></h1>
+  <div>
+    <a href="/songs/<%= song.id %>/edit">Edit</a>  
+  </div>
+  <p>From Album 
+    <a href="/albums/<%=song.album.id %>">
+      <%= song.album.title %>
+    </a>
+  </p>
+</body>
+</html>

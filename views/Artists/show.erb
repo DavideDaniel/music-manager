@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title><%= artist.name %></title>
+</head>
+<body>
+  <h1><%= artist.name %></h1>
+  <img src="<%= artist.sigil_url %>" />
+  <p>Characters:</p>
+  <ul>
+    <% artist.albums.each do |album| %>
+      <li>
+        <a href="/albums/<%= album.id %>">
+        <%= album.name %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

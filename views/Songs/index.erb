@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title>Songs</title>
+</head>
+<body>
+  <a href="/characters/new">Add a Song</a>
+  <ul>
+    <% songs.each do |song| %>
+      <li>
+        <a href="/songs/<%= song.id %>">
+        <%= song.title %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

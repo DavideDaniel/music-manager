@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title>Albums</title>
+</head>
+<body>
+  <a href="/songs/new">Add an album</a>
+  <ul>
+    <% albums.each do |album| %>
+      <li>
+        <a href="/albums/<%= album.id %>">
+        <%= album.title %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>

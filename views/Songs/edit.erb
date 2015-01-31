@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title>Edit <%= song.title %></title>
+</head>
+<body>
+  <form action="/songs/<%= song.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="text" name="title" placeholder="Title" value="<%= song.title %>" />
+    <select name="album_id">
+      <% albums.each do |album| %>
+        <option value="<%= album.id %>" <%= "selected" if song.album.id == album.id%> ><%= album.title %></option>
+      <% end %>
+    </select>
+    <button>Submit</button>
+  </form>
+
+  <form action="/songs/<%= song.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete Song</button>
+  </form>
+</body>
+</html>
