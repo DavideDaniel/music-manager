@@ -17,6 +17,7 @@ end
 get("/songs") do
   erb(:"songs/index", { locals: { songs: Song.all(), } })
 end
+
 get("/songs/new") do
   erb(:"songs/new", { locals: { albums: Album.all(), } })
 end
@@ -53,6 +54,7 @@ put("/songs/:id") do
 
   erb(:"songs/show", { locals: { song: song } })
 end
+
 delete("/songs/:id") do
   song = Song.find_by({id: params[:id]})
   song.destroy
@@ -118,5 +120,27 @@ end
 
 get("/artists/:id") do
   artist = Artist.find_by({id: params[:id]})
+  erb(:"artists/show", { locals: { artist: artist } })
+end
+
+post '/artist' do
+  artist_hash = {
+    name: params["name"]
+  }
+
+  Artist.create(artist_hash)
+
+  erb :"artists/index", locals: { artists: Artist.all() }
+end
+
+
+put("/artists/:id") do
+  artist_hash = {
+    name: params["name"]
+  }
+
+  artist = Artist.find_by({id: params[:id]})
+  artist.update(artist_hash)
+
   erb(:"artists/show", { locals: { artist: artist } })
 end
