@@ -3,15 +3,23 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <meta charset="UTF-8">
-
 </head>
 <body>
-
+  <h1><%= album.title %></h1>
   <div>
     <a href="/album/<%= album.id %>/edit">Edit</a>  
   </div>
+   <ul>
+    <% album.songs.each do |song| %>
+      <li>
+        <a href="/song/<%= song.id %>">
+        <%= song.title %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
   <p>From Artist 
-    <a href="/artist/<%=album.artist_id %>">
+    <a href="/artist/<%=album.artist.id %>">
       <%= album.artist.name %>
     </a>
   </p>

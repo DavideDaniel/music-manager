@@ -24,7 +24,7 @@ end
 
 get("/artist/new") do
 
-  erb(:"artists/new", { locals: { artists: Artist.all(), } })
+  erb(:"artists/new", { locals: { artists: Artist.all() } })
 end
 
 get("/artist/:id") do
@@ -67,11 +67,8 @@ get("/artist/:id/edit") do
 end
 
 get("/albums") do
-  erb(:"albums/index", { locals: { albums: Album.all(), } })
+  erb(:"albums/index", { locals: { albums: Album.all() } })
 end
-
-
-
 
 post("/albums") do
   album_hash = {
@@ -93,7 +90,7 @@ end
 
 get("/album/new") do
 
-  erb(:"albums/new", { locals: { artists: Artist.all(), } })
+  erb(:"albums/new", { locals: { albums: Album.all(), artists: Artist.all() } })
 end
 
 get("/album/:id/edit") do
@@ -123,16 +120,16 @@ end
 
 get("/songs") do
 
-  erb(:"songs/index", { locals: { songs: Song.all(), } })
+  erb(:"songs/index", { locals: { songs: Song.all() } })
 end
 
 get("/song/new") do
 
-  erb(:"songs/new", { locals: { albums: Album.all(), } })
+  erb(:"songs/new", { locals: { albums: Album.all() } })
 end
 
 post("/songs") do
-  album_hash = {
+  song_hash = {
     title: params["title"],
     album_id: params["album_id"]
   }
