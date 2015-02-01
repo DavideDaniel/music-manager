@@ -35,7 +35,7 @@ bastille = Artist.create({
 
 bad_blood = Album.create({
   title: "Bad Blood",
-  artist_id: silversun.id
+  artist_id: bastille.id
 })
 
 Song.create({

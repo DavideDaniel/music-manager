@@ -3,16 +3,16 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <meta charset="UTF-8">
-  <title><%= album.title %></title>
+
 </head>
 <body>
-  <h1><%= album.title %></h1>
+
   <div>
-    <a href="/albums/<%= album.id %>/edit">Edit</a>  
+    <a href="/album/<%= album.id %>/edit">Edit</a>  
   </div>
   <p>From Artist 
     <a href="/artist/<%=album.artist_id %>">
-      <%= artist.name %>
+      <%= album.artist.name %>
     </a>
   </p>
 </body>

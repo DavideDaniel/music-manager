@@ -6,7 +6,7 @@
   <title>Edit <%= album.title %></title>
 </head>
 <body>
-  <form action="/albums/<%= album.id %>" method="POST">
+  <form action="/album/<%= album.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <input type="text" name="name" placeholder="Name" value="<%= album.title %>" />
     <select name="artist_id">
@@ -17,7 +17,7 @@
     <button>Submit</button>
   </form>
 
-  <form action="/albums/<%= album.id %>" method="POST">
+  <form action="/album/<%= album.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <button>Delete Album</button>
   </form>

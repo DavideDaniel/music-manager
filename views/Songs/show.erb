@@ -8,10 +8,10 @@
 <body>
   <h1><%= song.title %></h1>
   <div>
-    <a href="/songs/<%= song.id %>/edit">Edit</a>  
+    <a href="/song/<%= song.id %>/edit">Edit</a>  
   </div>
   <p>From Album 
-    <a href="/albums/<%=song.album.id %>">
+    <a href="/album/<%=song.album.id %>">
       <%= song.album.title %>
     </a>
   </p>

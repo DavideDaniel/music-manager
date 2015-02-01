@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <title>Edit <%= artist.name %></title>
+</head>
+<body>
+  <form action="/artist/<%= artist.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="text" name="name" placeholder="Name" value="<%= artist.name %>" />
+    <button>Submit</button>
+  </form>
+
+  <form action="/artist/<%= artist.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete Artist</button>
+  </form>
+</body>
+</html>

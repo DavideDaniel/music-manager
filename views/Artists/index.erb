@@ -7,10 +7,11 @@
 </head>
 <body>
   <p>Artists:</p>
+  <a href="/artist/new">Add an Artist</a>
   <ul>
     <% artists.each do |artist| %>
       <li>
-        <a href="/artists/<%= artist.id %>">
+        <a href="/artist/<%= artist.id %>">
           <%= artist.name %>
         </a>
       </li>

@@ -12,61 +12,64 @@ after do
 end
 
 get("/") do
+
   erb(:index)
 end
-get("/songs") do
-  erb(:"songs/index", { locals: { songs: Song.all(), } })
+
+
+get("/artists") do
+
+  erb(:"artists/index", { locals: { artists: Artist.all() } })
 end
 
-get("/songs/new") do
-  erb(:"songs/new", { locals: { albums: Album.all(), } })
+get("/artist/new") do
+
+  erb(:"artists/new", { locals: { artists: Artist.all(), } })
 end
 
-post("/songs") do
-  album_hash = {
-    title: params["title"],
-    album_id: params["album_id"]
+get("/artist/:id") do
+  artist = Artist.find_by({id: params[:id]})
+  
+  erb(:"artists/show", { locals: { artist: artist } })
+end
+
+post '/artists' do
+  artist_hash = {
+    name: params["name"]
   }
 
-  Song.create(song_hash)
+  Artist.create(artist_hash)
 
-  erb(:"songs/index", { locals: { albums: Album.all() } })
+  erb :"artists/index", locals: { artists: Artist.all() }
 end
 
-get("/songs/:id") do
-  song = Song.find_by({id: params[:id]})
-  erb(:"songs/show", { locals: { song: song } })
-end
 
-get("/songs/:id/edit") do
-  song = Song.find_by({id: params[:id]})
-  erb(:"songs/edit", { locals: { song: song , albums: Album.all()} })
-end
-
-put("/songs/:id") do
-  song_hash = {
-    title: params["title"],
-    album_id: params["album_id"]
+put("/artist/:id/") do
+  artist_hash = {
+    name: params["name"]
   }
 
-  song = Album.find_by({id: params[:id]})
-  song.update(song_hash)
+  artist = Artist.find_by({id: params[:id]})
+  artist.update(artist_hash)
 
-  erb(:"songs/show", { locals: { song: song } })
+  erb(:"artists/show", { locals: { artist: artist } })
 end
 
-delete("/songs/:id") do
-  song = Song.find_by({id: params[:id]})
-  song.destroy
-
-  redirect "/songs"
+delete("/artist/:id") do
+  artist = Album.find_by({id: params[:id]})
+  artist.destroy
+  redirect "/artists"
 end
 
-
+get("/artist/:id/edit") do
+  artist = Artist.find_by({id: params[:id]})
+  erb(:"artists/edit", { locals: { artist: artist } })
+end
 
 get("/albums") do
   erb(:"albums/index", { locals: { albums: Album.all(), } })
 end
+
 
 
 
@@ -82,18 +85,24 @@ post("/albums") do
 end
 
 
-get("/albums/:id") do
+get("/album/:id") do
   album = Album.find_by({id: params[:id]})
+
   erb(:"albums/show", { locals: { album: album } })
 end
 
+get("/album/new") do
 
-get("/albums/:id/edit") do
+  erb(:"albums/new", { locals: { artists: Artist.all(), } })
+end
+
+get("/album/:id/edit") do
   album = Album.find_by({id: params[:id]})
+
   erb(:"albums/edit", { locals: { album: album, artists: Artist.all() } })
 end
 
-put("/albums/:id") do
+put("/album/:id") do
   album_hash = {
     title: params["title"],
     artist_id: params["artist_id"]
@@ -105,42 +114,60 @@ put("/albums/:id") do
   erb(:"albums/show", { locals: { album: album } })
 end
 
-delete("/albums/:id") do
+delete("/album/:id") do
   album = Album.find_by({id: params[:id]})
   album.destroy
 
   redirect "/albums"
 end
 
+get("/songs") do
 
-get("/artists") do
-
-  erb(:"artists/index", { locals: { artists: Artist.all() } })
+  erb(:"songs/index", { locals: { songs: Song.all(), } })
 end
 
-get("/artists/:id") do
-  artist = Artist.find_by({id: params[:id]})
-  erb(:"artists/show", { locals: { artist: artist } })
+get("/song/new") do
+
+  erb(:"songs/new", { locals: { albums: Album.all(), } })
 end
 
-post '/artist' do
-  artist_hash = {
-    name: params["name"]
+post("/songs") do
+  album_hash = {
+    title: params["title"],
+    album_id: params["album_id"]
   }
 
-  Artist.create(artist_hash)
+  Song.create(song_hash)
 
-  erb :"artists/index", locals: { artists: Artist.all() }
+  erb(:"songs/index", { locals: { albums: Album.all() } })
 end
 
+get("/song/:id") do
+  song = Song.find_by({id: params[:id]})
 
-put("/artists/:id") do
-  artist_hash = {
-    name: params["name"]
+  erb(:"songs/show", { locals: { song: song } })
+end
+
+get("/song/:id/edit") do
+  song = Song.find_by({id: params[:id]})
+  erb(:"songs/edit", { locals: { song: song , albums: Album.all()} })
+end
+
+put("/song/:id") do
+  song_hash = {
+    title: params["title"],
+    album_id: params["album_id"]
   }
 
-  artist = Artist.find_by({id: params[:id]})
-  artist.update(artist_hash)
+  song = Album.find_by({id: params[:id]})
+  song.update(song_hash)
 
-  erb(:"artists/show", { locals: { artist: artist } })
+  erb(:"songs/show", { locals: { song: song } })
+end
+
+delete("/song/:id") do
+  song = Song.find_by({id: params[:id]})
+  song.destroy
+
+  redirect "/songs"
 end

@@ -8,6 +8,7 @@
 <body>
   <form action="/albums" method="POST">
     <input type="text" name="title" placeholder="Title" />
+    
     <select name="artist_id">
       <% artists.each do |artist| %>
         <option value="<%= artist.id %>"><%= artist.name %></option>

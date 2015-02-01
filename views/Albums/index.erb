@@ -6,11 +6,11 @@
   <title>Albums</title>
 </head>
 <body>
-  <a href="/songs/new">Add an album</a>
+  <a href="/album/new">Add an album</a>
   <ul>
     <% albums.each do |album| %>
       <li>
-        <a href="/albums/<%= album.id %>">
+        <a href="/album/<%= album.id %>">
         <%= album.title %>
         </a>
       </li>
