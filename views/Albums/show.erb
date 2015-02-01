@@ -6,6 +6,7 @@
 </head>
 <body>
   <h1><%= album.title %></h1>
+  <a href="/artist/<%= album.artist.id %>">Back to <%= album.artist.name %>'s page</a>
   <div>
     <a href="/album/<%= album.id %>/edit">Edit</a>  
   </div>

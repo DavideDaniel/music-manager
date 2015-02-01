@@ -10,10 +10,35 @@
   <div>
     <a href="/song/<%= song.id %>/edit">Edit</a>  
   </div>
+  <div class = "spotFrame">
+  <button id = "playSong">Play</button>
+  <script>
+  var button = document.querySelector("#playSong");
+
+  button.addEventListener("click", function(){
+    generateTrack();
+  })
+
+  var generateTrack = function () {
+  var spotFrame = document.querySelector('.spotFrame');
+  var spotWidget = document.createElement( 'iframe' );
+  spotWidget.src =
+    "https://embed.spotify.com/?uri=spotify:track:6eouYGSfcDirtm3u2Xtlqg";
+
+  spotWidget.style.height = "10vh";
+  spotWidget.style.width = "30vw";
+  spotWidget.style.frameborder = "0";
+
+  spotFrame.appendChild( spotWidget );
+  }
+  </script>
+  </div>
+
   <p>From Album 
     <a href="/album/<%=song.album.id %>">
       <%= song.album.title %>
     </a>
   </p>
+
 </body>
 </html>

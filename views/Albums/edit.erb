@@ -6,6 +6,7 @@
   <title>Edit <%= album.title %></title>
 </head>
 <body>
+<a href="/artist/<%= album.artist.id %>">Back to <%= album.artist.name %>'s page</a>  
   <form action="/album/<%= album.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <input type="text" name="title" placeholder="Album Title" value="<%= album.title %>" />
