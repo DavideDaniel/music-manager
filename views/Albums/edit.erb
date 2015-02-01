@@ -8,7 +8,7 @@
 <body>
   <form action="/album/<%= album.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT">
-    <input type="text" name="name" placeholder="Name" value="<%= album.title %>" />
+    <input type="text" name="title" placeholder="Album Title" value="<%= album.title %>" />
     <select name="artist_id">
       <% artists.each do |artist| %>
         <option value="<%= artist.id %>" <%= "selected" if album.artist.id == artist.id%> ><%= artist.name %></option>
@@ -16,7 +16,13 @@
     </select>
     <button>Submit</button>
   </form>
-
+  <h3>Add songs here:</h3>
+  <form action="/songs" method="POST">
+    <input type="text" name="title" placeholder="Enter Song Title" />
+    <input type="hidden" name="album_id" value="<%= album.id %>" />
+    <button>Submit</button>
+    </form>
+  <h4>Warning: All songs included in album will be deleted from database as well!</h4>
   <form action="/album/<%= album.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <button>Delete Album</button>

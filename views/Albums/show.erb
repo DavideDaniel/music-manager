@@ -10,7 +10,7 @@
     <a href="/album/<%= album.id %>/edit">Edit</a>  
   </div>
   <form action="/songs" method="POST">
-    <input type="text" name="title" placeholder="Enter Song Title" />
+    <input type="text" name="title" placeholder="Add a Song" />
     <input type="hidden" name="album_id" value="<%= album.id %>" />
     <button>Submit</button>
     </form>
