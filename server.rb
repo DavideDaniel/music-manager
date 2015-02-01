@@ -18,11 +18,10 @@ end
 
 
 get("/artists") do
-
   erb(:"artists/index", { locals: { artists: Artist.all() } })
 end
 
-get("/artist/new") do
+get("/artists/new") do
 
   erb(:"artists/new", { locals: { artists: Artist.all() } })
 end
@@ -41,6 +40,7 @@ post '/artists' do
   Artist.create(artist_hash)
 
   erb :"artists/index", locals: { artists: Artist.all() }
+  redirect "/artists"
 end
 
 
@@ -56,7 +56,7 @@ put("/artist/:id/") do
 end
 
 delete("/artist/:id") do
-  artist = Album.find_by({id: params[:id]})
+  artist = Artist.find_by({id: params[:id]})
   artist.destroy
   redirect "/artists"
 end
@@ -83,15 +83,13 @@ end
 
 
 get("/album/:id") do
+  puts "Hit the route /:id"
   album = Album.find_by({id: params[:id]})
 
   erb(:"albums/show", { locals: { album: album } })
 end
 
-get("/album/new") do
 
-  erb(:"albums/new", { locals: { albums: Album.all(), artists: Artist.all() } })
-end
 
 get("/album/:id/edit") do
   album = Album.find_by({id: params[:id]})
@@ -118,12 +116,17 @@ delete("/album/:id") do
   redirect "/albums"
 end
 
+get("/albums/new") do
+puts "Hit the route /new"
+  erb(:"albums/new", { locals: { artists: Artist.all() } })
+end
+
 get("/songs") do
 
   erb(:"songs/index", { locals: { songs: Song.all() } })
 end
 
-get("/song/new") do
+get("/songs/new") do
 
   erb(:"songs/new", { locals: { albums: Album.all() } })
 end
@@ -134,9 +137,10 @@ post("/songs") do
     album_id: params["album_id"]
   }
 
-  Song.create(song_hash)
+  song = Song.create(song_hash)
+  
+  erb(:"songs/show", { locals: { song: song, albums: Album.all() } })
 
-  erb(:"songs/index", { locals: { albums: Album.all() } })
 end
 
 get("/song/:id") do

@@ -7,6 +7,9 @@
 </head>
 <body>
   <h1><%= artist.name %></h1>
+  <div>
+    <a href="/artist/<%= artist.id %>/edit">Edit</a>  
+  </div>
   <p>Albums:</p>
   <ul>
     <% artist.albums.each do |album| %>
@@ -17,5 +20,9 @@
       </li>
     <% end %>
   </ul>
+  <form action="/albums" method="POST">
+    <input type="text" name="title" placeholder="Title" />
+    <input type="hidden" name="artist_id" value="<%= artist.id %>" />
+    <button>Submit</button>
 </body>
 </html>

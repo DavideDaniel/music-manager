@@ -9,6 +9,12 @@
   <div>
     <a href="/album/<%= album.id %>/edit">Edit</a>  
   </div>
+  <form action="/songs" method="POST">
+    <input type="text" name="title" placeholder="Enter Song Title" />
+    <input type="hidden" name="album_id" value="<%= album.id %>" />
+    <button>Submit</button>
+    </form>
+   
    <ul>
     <% album.songs.each do |song| %>
       <li>
@@ -18,6 +24,7 @@
       </li>
     <% end %>
   </ul>
+  
   <p>From Artist 
     <a href="/artist/<%=album.artist.id %>">
       <%= album.artist.name %>
