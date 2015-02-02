@@ -6,39 +6,28 @@
   <title><%= song.title %></title>
 </head>
 <body>
-  <h1><%= song.title %></h1>
+  <h1 id = "song"><%= song.title %></h1>
+  <p>From
+    <a href="/album/<%=song.album.id %>" id ="album">
+      <%= song.album.title %>
+    </a>
+    by <a href="/album/<%=song.album.artist.id %>" id ="artist">
+      <%= song.album.artist.name %>
+    </a>
+  </p>
   <div>
     <a href="/song/<%= song.id %>/edit">Edit</a>  
   </div>
+  <div class="container">
+    
+  </div>
   <div class = "spotFrame">
-  <button id = "playSong">Play</button>
-  <script>
-  var button = document.querySelector("#playSong");
-
-  button.addEventListener("click", function(){
-    generateTrack();
-  })
-
-  var generateTrack = function () {
-  var spotFrame = document.querySelector('.spotFrame');
-  var spotWidget = document.createElement( 'iframe' );
-  spotWidget.src =
-    "https://embed.spotify.com/?uri=spotify:track:6eouYGSfcDirtm3u2Xtlqg";
-
-  spotWidget.style.height = "10vh";
-  spotWidget.style.width = "30vw";
-  spotWidget.style.frameborder = "0";
-
-  spotFrame.appendChild( spotWidget );
-  }
+  <script src = "../spotifySearch.js">
+  
   </script>
   </div>
 
-  <p>From Album 
-    <a href="/album/<%=song.album.id %>">
-      <%= song.album.title %>
-    </a>
-  </p>
+  
 
 </body>
 </html>
