@@ -6,6 +6,7 @@ require_relative './lib/album'
 require_relative './lib/song'
 require 'pry'
 
+echoAPIKey = ENV['ECHOAPI']
 
 after do
   ActiveRecord::Base.connection.close
@@ -160,9 +161,11 @@ post("/songs") do
 end
 
 get("/song/:id") do
+  echoKey = "#{echoAPIKey}"
+
   song = Song.find_by({id: params[:id]})
 
-  erb(:"songs/show", { locals: { song: song } })
+  erb(:"songs/show", { locals: { echoKey: echoKey, song: song } })
 end
 
 get("/song/:id/edit") do

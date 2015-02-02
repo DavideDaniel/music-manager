@@ -7,6 +7,8 @@
 </head>
 <body>
   <h1 id = "song"><%= song.title %></h1>
+
+
   <p>From
     <a href="/album/<%=song.album.id %>" id ="album">
       <%= song.album.title %>
@@ -18,16 +20,24 @@
   <div>
     <a href="/song/<%= song.id %>/edit">Edit</a>  
   </div>
-  <div class="container">
-    
-  </div>
-  <div class = "spotFrame">
-  <script src = "../spotifySearch.js">
   
-  </script>
+  <div class = "spotFrame">
+ 
+
   </div>
 
+  <script src = "../spotifySearch.js">
+  </script>
+  <script src = "../echoNestSearch.js">
+
+  </script>
+  <script>
+  searchTrack( artist, album, song );
+  var echoKey = "<%= echoKey %>";
+  // searchSimilar(artist, echoKey);
+  </script>
   
+
 
 </body>
 </html>

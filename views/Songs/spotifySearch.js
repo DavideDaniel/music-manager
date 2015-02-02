@@ -45,7 +45,7 @@ var searchTrack = function ( artist, album, song ) {
 
 };
 
-searchTrack( artist, album, song )
+
 var generateTrack = function ( uri ) {
   var spotFrame = document.querySelector( '.spotFrame' );
   var spotWidget = document.createElement( 'iframe' );

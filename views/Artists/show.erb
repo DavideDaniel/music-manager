@@ -20,9 +20,16 @@
       </li>
     <% end %>
   </ul>
+  <div class="container">
+    
+  </div>
   <form action="/albums" method="POST">
     <input type="text" name="title" placeholder="Add an album here" />
     <input type="hidden" name="artist_id" value="<%= artist.id %>" />
     <button>Submit</button>
+    <script src = "../spotifySearch.js">
+  </script>
+  <script>searchArtist( artist, album, song );
+  </script>
 </body>
 </html>

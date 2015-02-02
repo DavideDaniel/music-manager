@@ -19,7 +19,7 @@ var searchArtist = function ( artist ) {
     console.log( musicAct.artists.items[ 0 ].popularity );
     var img = document.createElement( "img" )
 
-    img.src = musicAct[ "artists" ][ "items" ][ 0 ][ "images" ][ 2 ].url;
+    img.src = musicAct[ "artists" ][ "items" ][ 0 ][ "images" ][ 1 ].url;
 
     container.appendChild( img )
 
@@ -45,7 +45,7 @@ var searchTrack = function ( artist, album, song ) {
 
 };
 
-searchTrack( artist, album, song )
+
 var generateTrack = function ( uri ) {
   var spotFrame = document.querySelector( '.spotFrame' );
   var spotWidget = document.createElement( 'iframe' );
